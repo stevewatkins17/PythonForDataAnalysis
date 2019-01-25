@@ -4,7 +4,12 @@ cd AnacondaProjects
 # clone my remote repo
 git clone https://github.com/stevewatkins17/PythonForDataAnalysis.git
 
-# make changes to existing file "git commands my quick reference.txt"
 
 # stage file for tracking
 git add "git commands my quick reference.txt"
+
+# stage all files for tracking that have been modified 
+git add -A
+
+# make changes to existing file "git commands my quick reference.txt"
+
