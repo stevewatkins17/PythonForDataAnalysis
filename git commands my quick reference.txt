@@ -1,15 +1,25 @@
+## initial setup
 # switch to root directory
 cd AnacondaProjects
 
 # clone my remote repo
 git clone https://github.com/stevewatkins17/PythonForDataAnalysis.git
 
+# add/change existing files
 
-# stage file for tracking
+# stage 1 file for tracking that has been modified 
 git add "git commands my quick reference.txt"
 
 # stage all files for tracking that have been modified 
 git add -A
 
-# make changes to existing file "git commands my quick reference.txt"
+# commit
+git commit -m "post files"
+
+# push changes 
+git push -u origin master
+
+# authenticate login
+Username for 'https://github.com': stevewatkins17@gmail.com
+
 
