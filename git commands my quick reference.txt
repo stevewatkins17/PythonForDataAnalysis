@@ -22,4 +22,9 @@ git push -u origin master
 # authenticate login
 Username for 'https://github.com': stevewatkins17@gmail.com
 
+# authenticate password 
+#(to setup Auth token go to: https://medium.com/@ginnyfahs/github-error-authentication-failed-from-command-line-3a545bfd0ca8
+
+Password for 'https://github.com': <password or Auth token if 2-factor>
+
 
