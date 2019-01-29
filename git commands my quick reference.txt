@@ -1,11 +1,34 @@
-## initial setup
+
+## change with feature branch merging to master
+
+# switch to root repo directory
+cd /c/users/stevewatkins/AnacondaProjects/PythonForDataAnalysis
+
+# make sure in sync with origin
+git pull origin master
+
+# create & checkout new feature branch "MyFeature"
+git checkout -b MyFeature
+
+# add/change existing files ....
+
+
+# stage files for tracking that have been modified 
+git add "git commands my quick reference.txt"
+git add "demo_AmexTransactions.ipynb"
+
+ 
+
+
+## directly change "master" branch
+
 # switch to root directory
 cd AnacondaProjects
 
 # clone my remote repo
 git clone https://github.com/stevewatkins17/PythonForDataAnalysis.git
 
-# add/change existing files
+# add/change existing files ....
 
 # stage 1 file for tracking that has been modified 
 git add "git commands my quick reference.txt"
