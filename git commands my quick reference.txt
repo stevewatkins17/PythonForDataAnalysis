@@ -21,7 +21,7 @@ git add "demo_AmexTransactions.ipynb"
 git commit -m "init commit all files"
 
 # push the commit 
-git push origin MyFeature
+git push -u origin MyFeature
 
 # switch to master
 git checkout master
