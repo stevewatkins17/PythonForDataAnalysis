@@ -32,8 +32,9 @@ git merge MyFeature
 # push local master to remote origin master 
 git push -u origin master
 
-#optionally delete local & remote branch
+# optionally delete local then remote branch (if exists)
 git branch -d MyFeature
+git push origin --delete MyFeature
 
 
 ##################################################################
