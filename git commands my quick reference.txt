@@ -2,7 +2,7 @@
 ## change with feature branch merging to master; assumes master branch exists on local repo
 
 # switch to root repo directory
-cd /c/users/stevewatkins/AnacondaProjects/PythonForDataAnalysis
+cd /users/stevewatkins/AnacondaProjects/PythonForDataAnalysis
 
 # make sure in sync with origin
 git pull origin master
@@ -17,18 +17,17 @@ git checkout -b MyFeature
 git add "git commands my quick reference.txt"
 git add "demo_AmexTransactions.ipynb"
 
- 
 # commit local files 
 git commit -m "init commit all files"
+
+# push the commit 
+git push origin MyFeature
 
 # switch to master
 git checkout master
 
 # in local Master branch, with changes committed to local feature branch, merge local feature branch to remote feature branch
 git merge MyFeature
-
-# push the commit 
-git push origin MyFeature
 
 
 
