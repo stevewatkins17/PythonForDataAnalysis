@@ -27,8 +27,8 @@ git push origin MyFeature
 # switch to master
 git checkout master
 
-## in local Master branch, with changes committed to local feature branch, merge local feature branch to remote feature branch
-git merge hubway_CL_20180928
+# in local Master branch, with changes committed to local feature branch, merge local feature branch to remote feature branch
+git merge MyFeature
 
 
 
