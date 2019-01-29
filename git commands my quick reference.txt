@@ -15,7 +15,6 @@ git checkout -b MyFeature
 
 
 # stage files for tracking that have been or will be modified 
-git add "git commands my quick reference.txt"
 git add "demo_AmexTransactions.ipynb"
 
 # commit local files 
