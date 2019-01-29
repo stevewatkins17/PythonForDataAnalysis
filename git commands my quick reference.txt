@@ -26,10 +26,10 @@ git push -u origin MyFeature
 # switch to master
 git checkout master
 
-# in local Master branch, with changes committed to local feature branch, merge local feature branch to remote feature branch
+# in local Master branch, with changes committed to local feature branch, merge local feature branch to local master branch
 git merge MyFeature
 
-# push the merge into local master to remote origin master 
+# push local master to remote origin master 
 git push -u origin master
 
 #optionally delete local & remote branch
