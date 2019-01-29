@@ -1,5 +1,6 @@
 
 ## change with feature branch merging to master; assumes master branch exists on local repo
+## NOTE THAT THIS PROCESS IS NOT A BEST PRACTICE; rather, it's a simple demo on how to manage changes using git cli
 
 # switch to root repo directory
 cd /users/stevewatkins/AnacondaProjects/PythonForDataAnalysis
