@@ -21,7 +21,7 @@ git add "demo_AmexTransactions.ipynb"
 git commit -m "init commit all files"
 
 # push the commit 
-git push -u origin MyFeature
+# git push -u origin MyFeature
 
 # switch to master
 git checkout master
@@ -29,7 +29,11 @@ git checkout master
 # in local Master branch, with changes committed to local feature branch, merge local feature branch to remote feature branch
 git merge MyFeature
 
+# push the commit 
+git push -u origin master
 
+
+##################################################################
 
 ## directly change "master" branch without existing local repo
 
