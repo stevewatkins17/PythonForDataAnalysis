@@ -20,7 +20,7 @@ git add "demo_AmexTransactions.ipynb"
 # commit local files 
 git commit -m "init commit all files"
 
-# push the local branch to remote origin 
+# optionally, push the local branch to remote origin 
 git push -u origin MyFeature
 
 # switch to master
@@ -31,6 +31,9 @@ git merge MyFeature
 
 # push the merge into local master to remote origin master 
 git push -u origin master
+
+#optionally delete local & remote branch
+git branch -d MyFeature
 
 
 ##################################################################
