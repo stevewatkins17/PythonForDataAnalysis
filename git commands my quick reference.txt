@@ -1,6 +1,9 @@
+## NOTE THAT THESE TWO PROCESSES ARE NOT A BEST PRACTICE; rather, they are simple demos on how to manage changes using git cli
 
-## change with feature branch merging to master; assumes master branch exists on local repo
-## NOTE THAT THIS PROCESS IS NOT A BEST PRACTICE; rather, it's a simple demo on how to manage changes using git cli
+##################################################################
+## change files with feature branch merging to master; assumes master branch exists on local repo
+##################################################################
+
 
 # switch to root repo directory
 cd /users/stevewatkins/AnacondaProjects/PythonForDataAnalysis
@@ -38,8 +41,8 @@ git push origin --delete MyFeature
 
 
 ##################################################################
-
 ## directly change "master" branch without existing local repo
+##################################################################
 
 # switch to root directory
 cd AnacondaProjects
@@ -65,8 +68,6 @@ git push -u origin master
 Username for 'https://github.com': stevewatkins17@gmail.com
 
 # authenticate password 
-#(to setup Auth token go to: https://medium.com/@ginnyfahs/github-error-authentication-failed-from-command-line-3a545bfd0ca8
+# NOTE this help doc for creating GitHub Auth token: https://medium.com/@ginnyfahs/github-error-authentication-failed-from-command-line-3a545bfd0ca8
 
 Password for 'https://github.com': <password or Auth token if 2-factor>
-
-
