@@ -22,9 +22,10 @@ In the perfectly efficient world, your final project is the culminating delivera
 
 So that we can technically discuss and demonstrate from a common toolset, we will be using & demoing the following:
 
-Python Version: 3.6 & up (from Anaconda)
-IDE: Jupyter Notebook (from Anaconda)
-Database: SQLite (part of the standard Python 3x library)
+- Python Version: 3.6 & up (from Anaconda)
+- IDE: Jupyter Notebook (from Anaconda)
+- Database: SQLite (part of the standard Python 3x library)
+
 Special Packages: none outside of Anaconda
  
 Simply installing the full Anaconda distribution installs everything Python you need to deliver your interim projects.
