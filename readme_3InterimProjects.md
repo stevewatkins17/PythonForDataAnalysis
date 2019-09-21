@@ -115,3 +115,34 @@ In Python:
 -- transform must include at least 1 aggregation, and 1 value manipulation or datatype redefinition
 3. Display the new dataset.
 
+# 8-Week Schedule
+
+## Week 1 - Introduction
+**Student Challenge 1.1** - Anaconda installed; open Jupyter Notebook, create any Python3 Notebook file.
+**Student Challenge 1.2** - Git installed; Github online account complete; clone your github repo to your local machine.
+
+## Week 2 - Choose & Import a datasource into Python
+**Student Challenge 2.1** - Choose a datasource
+**Student Challenge 2.2** - import datasource into Python3 object (Pandas datafram or Python list of tuples)
+**Student Challenge 2.3** - display imported datasource (print to screen)
+
+## Week 3 - Interim Project 1 due
+Students will choose a partner to perform code review; partner will clone student's repo & execute project code successfully.
+
+## Week 4 - Read/Write to relational DB
+**Student Challenge 4.1** - create a DB and a table inside the DB. Can be any relational, ACID-compliant DBMS (SQLite, Oracle, MSSQL, Mysql, postgresql, DB2 etc.) but we will focus on SQLite which is already implemented as part of Python3. 
+**Student Challenge 4.2** - use SQL language to manipulate/clean/reformat data inside a DBMS table.
+
+## Week 5 - Interim Project 2 due
+Students will choose a partner to perform code review; partner will clone student's repo & execute project code successfully.
+
+## Week 6 - Data Transform/Aggregation
+Student Challenge 6.1 - Transform 
+
+## Week 7 - Interim Project 3 due
+Student Challenge 2.1 - Choose a datasource
+## Week 8 - Final class
+Student Challenge 2.1 - Choose a datasource
+
+
+
