@@ -1,5 +1,5 @@
-SourceDB = "HCHB_COMMON"
-SourceInstance = "DBDWH202"
+SourceDB = "MY_COMMON"
+SourceInstance = "DBDWH"
 Query_pt = """
 select top 100 
   [Pt_id]
