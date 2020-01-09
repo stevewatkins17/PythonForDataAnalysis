@@ -1,4 +1,4 @@
-# Overview - Interim Projects - Python for Data Analysis
+# Overview - Interim Projects - Python for Data Analysis 
 
 This course requires the submission of three small interim Python projects, each of which builds off the others (conceptually & technically). 
 
