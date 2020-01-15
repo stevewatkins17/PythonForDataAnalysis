@@ -24,6 +24,9 @@ git checkout -b Jan2020
 # to verify file changes exe git status
 git status 
 
+# to remove an unwanted directory & its files, for example the Jupyter Notebook temp dir ".ipynb_checkpoints"
+rm -fr .ipynb_checkpoints/
+
 # Once finished (enough), stage files for tracking that have been modified 
 git add -A
 
