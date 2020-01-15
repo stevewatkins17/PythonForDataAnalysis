@@ -1,8 +1,8 @@
 # Overview - Interim Projects - Python for Data Analysis 
 
-This course requires the submission of three small interim Python projects, each of which builds off the others (conceptually & technically). 
+This course requires the submission of three small interim Python projects, each of which builds off the previous one (conceptually & technically). 
 
-You may think of these interim projects as "stair steps" or "stepping stones" leading to a larger data analytics project. 
+You may think of these interim projects as "stair steps" leading to a larger data analytics project. 
 
 That said, no project deliverable is "locked in" to the previous one. Your next project may shift directions, methods, topics, data sources etc from that which you produced for the previous deliverable. 
 
@@ -13,6 +13,7 @@ Just realize that when you do switch directions, you will end up re-working that
 
 - Anaconda distribution of Python
 - git desktop client
+
 
 ## Standard Tools
 
@@ -26,11 +27,11 @@ Special Packages: none outside of Anaconda
  
 Simply installing the full Anaconda distribution installs everything Python you need to deliver your interim projects.
 
-You are welcome to use other IDEs, versions of Python or DBMSes. 
+Note that we will be instructing and demoing using the Standard Tools, and we assume you have Anaconda installed. 
 
-However, note that we will be instructing and demoing using the Standard Tools, and we assume you have Anaconda installed. 
+We strongly discourage you from using versions of Python not supported by Anaconda, or using IDEs or DBMSes not installed with Anaconda. 
 
-And we may not have knowledge or experience with whatever alternative tools or packages that you're using.
+**Occasionally students ignore the above advice and work outside of Anaconda. It almost always leads to problems and failed deliveries.**
 
 
 # Summary Description of 3 Interim Projects
@@ -48,11 +49,9 @@ Each are detailed further below.
 
 The following are Interim Project delivery requirements:
 
-- git master/feature branch -- 
-	- your first interim project deliverable should be stored in your git main or master branch. 
-	- your 2nd & 3rd deliverables should be stored in git feature branches. 
+- git repo -- your interim project deliverable should be stored in your git repo. 
 
-- executable Python script -- QA (the 3rd party that tests your project) will clone your branch & execute your Python. It will succeed or fail. 
+- executable Python script -- QA (the 3rd party who tests your project) will clone your repo & execute your Python. It will succeed or fail. 
 
 - readme.md -- instructions/help for the QA tester. 
 
@@ -82,7 +81,7 @@ The datasource can be:
 - database query results (relational/nosql)
 - api calls
 
-2. into any Python object
+2. Imported into any Python object
 The Python object could be:
 - pandas data frame
 - tuple of lists
@@ -120,12 +119,12 @@ In Python:
 ## Week 1 - Introduction
 **Student Challenge 1.1** - Anaconda installed; open Jupyter Notebook, create any Python3 Notebook file.
 
-**Student Challenge 1.2** - Git installed; Github online account complete; clone your github repo to your local machine.
+**Student Challenge 1.2** - Git installed; Github online account complete; clone your git repo to your local machine.
 
 ## Week 2 - Choose & Import a datasource into Python
 **Student Challenge 2.1** - Choose a datasource
 
-**Student Challenge 2.2** - import datasource into Python3 object (Pandas datafram or Python list of tuples)
+**Student Challenge 2.2** - import datasource into Python3 object (Pandas dataframe or Python list of tuples)
 
 **Student Challenge 2.3** - display imported datasource (print to screen)
 

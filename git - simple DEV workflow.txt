@@ -1,0 +1,55 @@
+#################################################################################
+## This is a demo of a simple DEV workflow using git on your local desktop. 
+## We assume that you already have a remote repo created on GitHub or wherever.
+#################################################################################
+
+
+# switch to root directory where you plan to store your repo(s)
+cd /Users/stevewatkins/Downloads/CodeLouisville/sw
+
+# clone your remote repo to your local path
+git clone https://github.com/stevewatkins17/PythonForDataAnalysis.git
+
+# switch to your newly cloned repo's root dir
+cd PythonForDataAnalysis
+
+# verify git status
+git status 
+
+# create & checkout new feature branch "Jan2020"
+git checkout -b Jan2020
+
+# do work - add/change existing files ....
+
+# to verify file changes exe git status
+git status 
+
+# Once finished (enough), stage files for tracking that have been modified 
+git add -A
+
+# commit local files 
+git commit -m "init commit all files"
+
+# push the local branch to remote origin (in this example, pushing to origin is merely backing up)
+git push -u origin Jan2020
+
+# authenticate login (if required)
+Username for 'https://github.com': stevewatkins17@gmail.com
+
+# authenticate password (if required)
+# NOTE this help doc for creating GitHub Auth token: https://medium.com/@ginnyfahs/github-error-authentication-failed-from-command-line-3a545bfd0ca8
+
+Password for 'https://github.com': <password or Auth token if 2-factor>
+
+# switch to master
+git checkout master
+
+# in local Master branch, with changes committed to local feature branch, merge local feature branch to local master branch
+git merge Jan2020
+
+# push local master to remote origin master 
+git push -u origin master
+
+# optionally delete local then remote branch (if exists)
+git branch -d Jan2020
+git push origin --delete Jan2020
