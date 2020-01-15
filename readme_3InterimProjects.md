@@ -11,8 +11,8 @@ Just realize that when you do switch directions, you will end up re-working that
 
 ## Install Requirements
 
-- Anaconda distribution of Python
-- git desktop client
+- Anaconda distribution of Python (https://www.anaconda.com/distribution/)
+- git desktop client (https://git-scm.com/downloads)
 
 
 ## Standard Tools
