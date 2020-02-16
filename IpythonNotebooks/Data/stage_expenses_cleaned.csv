@@ -1,0 +1,9 @@
+,Tran_Date,Vendor_Name,Vendor_State,Vendor_Zip,Vendor_Category,Vendor_Amount
+0,2018-01-11,Trader Joe's,KY,40207,Merchandise & Supplies,147.72
+1,2018-01-03,Amazon Marketplace,WA,98109,Merchandise & Supplies,85.0
+2,2018-10-22,SEATGEEK,NY,10003,Entertainment,21.08
+3,2018-10-20,SEATGEEK,NY,10003,Entertainment,18.96
+4,2018-01-02,THORNTONS,KY,40059,Transportation,11.7
+5,2018-01-02,Google Services,CA,94043,Business Services,9.99
+6,2018-01-03,AMAZON WEB SERVICES,WA,98109,Business Services,9.46
+7,2018-01-01,THORNTONS,KY,40059,Transportation,7.71
