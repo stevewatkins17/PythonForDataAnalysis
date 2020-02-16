@@ -1,7 +1,7 @@
-
 import zipfile as z
 import pathlib
 import os
+import shutil
 
 
 def GetDirs(path):
@@ -29,8 +29,9 @@ def DeleteFile(target_file):
     
 def DeleteDir(target_dir_to_delete):
     try:
-        target_dir_to_delete.rmdir()
+        shutil.rmtree(target_dir_to_delete)
         return 1
     except OSError as e:
         return 0    
+    
 
