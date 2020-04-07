@@ -21,30 +21,22 @@ cd PythonForDataAnalysis
 # verify git status
 git status 
 
-
 # do work - add/change existing files ....
 
-# to verify file changes exe git status
+# to verify file changes
 git status 
 
 # to remove an unwanted directory & its files, for example the Jupyter Notebook temp dir ".ipynb_checkpoints"
+# in the future you can use ".gitignore" to exclude files by name or pattern
 rm -fr .ipynb_checkpoints/
 
 # Once finished (enough), stage for tracking files that have been modified.
 git add -A
 
 # commit local files 
-git commit -m "init commit all files"
+git commit -m "init commit new files"
 
 # push the local branch to remote origin (in this example, pushing to origin is merely backing up)
 git push -u origin mainline
 
-# authenticate login (if required)
-Username for 'https://github.com': stevewatkins17@gmail.com
-
-# authenticate password (if required)
-# NOTE this help doc for creating GitHub Auth token: https://medium.com/@ginnyfahs/github-error-authentication-failed-from-command-line-3a545bfd0ca8
-
-Password for 'https://github.com': <password or Auth token if 2-factor>
-
-# At this point, your remote mainline repo should be perfectly in-sync with your local repo. Rinse & repeat for continued changes.
+# At this point, your remote repo should be perfectly in-sync with your local repo. Rinse & repeat for continued changes.
