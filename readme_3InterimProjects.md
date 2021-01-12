@@ -1,4 +1,4 @@
-Specifically designed for Code Louisville, Winter 2020.
+Specifically designed for Code Louisville, Winter 2020.\
 
 # Overview - Interim Projects - Python for Data Analysis 
 
