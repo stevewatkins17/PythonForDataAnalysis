@@ -1,0 +1,41 @@
+{
+    "workbooks": [
+        "Workbook1" 
+        ,"Workbook2" 
+        ,"Workbook3"
+        ] 
+	,"https://basrv.qa.hchb.local" : {
+		 "ReleaseEnable" : "True"
+		,"include_content_urls": [
+			 "QA"
+			,"Wabash" 
+			,"HOV"
+			,"AccentCare"
+			]
+		,"exclude_content_urls": [
+			"Test"
+			,"SUTTER"
+			,"Demo"
+			,"HOV"
+			,"MyFakeCustomer1"
+			]
+		}
+	,"https://basrv.qa.hchb.local" : {
+		 "ReleaseEnable" : "True"
+		,"include_content_urls": [
+			]
+		,"exclude_content_urls": [
+			"Test"
+			,"VERITAS"
+			,"Demo"
+			,"RIVERSIDE"
+			]
+		}
+	,"https://basrv.qa.hchb.local" : {
+		 "ReleaseEnable" : "False"
+		,"include_content_urls": [
+			]
+		,"exclude_content_urls": [
+			]
+		}
+}
