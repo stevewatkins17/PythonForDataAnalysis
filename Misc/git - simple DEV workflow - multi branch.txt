@@ -17,7 +17,7 @@ cd PythonForDataAnalysis
 git status 
 
 # create & checkout new feature branch "Jan2020"
-git checkout -b Jan2020
+git checkout -b feature/US234567
 
 # do work - add/change existing files ....
 
@@ -28,7 +28,7 @@ git status
 rm -fr .ipynb_checkpoints/
 
 # Once finished (enough), stage files for tracking that have been modified 
-git add -A
+git add password.py
 
 # commit local files 
 git commit -m "init commit all files"
@@ -44,15 +44,17 @@ Username for 'https://github.com': stevewatkins17@gmail.com
 
 Password for 'https://github.com': <password or Auth token if 2-factor>
 
-# switch to master
-git checkout master
+# switch to mainline
+git checkout mainline
 
-# in local Master branch, with changes committed to local feature branch, merge local feature branch to local master branch
-git merge Jan2020
+# in local mainline branch, with changes committed to local feature branch, merge local feature branch to local master branch
+git merge feature/US234567
 
-# push local master to remote origin master 
-git push -u origin master
+# push local mainline to remote origin mainline 
+git push -u origin mainline
 
 # optionally delete local then remote branch (if exists)
-git branch -d Jan2020
-git push origin --delete Jan2020
+git branch -D feature/US234567
+git push origin --delete feature/US2345670
+
+
