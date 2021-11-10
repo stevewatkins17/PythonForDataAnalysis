@@ -1,0 +1,17 @@
+{
+     "unit_test_batch_name" : "udf_GetAttachmentsList - XAI"
+    ,"unit_test_sql_file" : "unit test - udf_GetAttachmentsList.sql"
+    ,"dbs_list" : {
+       "XAISQL841":"TEMP_MYDB"
+     }
+    ,"dbs_query_instance" : {
+         "i": "XAISQL841" 
+        ,"db": "master" 
+        ,"sql_file" : "db_catalog_instance_dbs.sql"
+        }
+    ,"dbs_query_tier" : {
+         "i": "AGENCY-CONFIGURATION-INFO-LOU-HNA" 
+        ,"db": "Configuration"
+        ,"sql_file" : "db_catalog_configuration_db.sql"
+        }     
+}
