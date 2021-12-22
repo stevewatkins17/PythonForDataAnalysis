@@ -1,5 +1,0 @@
-2021-10-12 20:15:14,450 - demo_python_logging.py - INFO - 'begin session':'2021-10-12 20:15:14.395665-04:00'
-2021-10-12 20:15:36,581 - demo_python_logging.py - INFO - 'begin session':'2021-10-12 20:15:36.526361-04:00'
-2021-10-12 20:15:36,582 - demo_python_logging.py - INFO - 'end session':'2021-10-12 20:15:36.582327-04:00'
-2021-10-27 14:51:45,543 - python_logging.py - INFO - 'begin session':'2021-10-27 14:51:43.514724-04:00'
-2021-10-27 14:51:45,544 - python_logging.py - INFO - 'end session':'2021-10-27 14:51:45.543219-04:00'
