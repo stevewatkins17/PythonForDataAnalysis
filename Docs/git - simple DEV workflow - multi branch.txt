@@ -17,7 +17,7 @@ cd PythonForDataAnalysis
 git status 
 
 # create & checkout new feature branch "Jan2020"
-git checkout -b feature/US234567
+git checkout -b Jan2020
 
 # do work - add/change existing files ....
 
@@ -25,9 +25,11 @@ git checkout -b feature/US234567
 git status 
 
 # to remove an unwanted directory & its files, for example the Jupyter Notebook temp dir ".ipynb_checkpoints"
+# in the future you can use ".gitignore" to exclude files by name or pattern
 rm -fr .ipynb_checkpoints/
 
 # Once finished (enough), stage files for tracking that have been modified 
+# below, we add a single file; to add all files, use "git add -A" or "git add ."
 git add password.py
 
 # commit local files 
@@ -36,25 +38,17 @@ git commit -m "init commit all files"
 # push the local branch to remote origin (in this example, pushing to origin is merely backing up)
 git push -u origin Jan2020
 
-# authenticate login (if required)
-Username for 'https://github.com': stevewatkins17@gmail.com
-
-# authenticate password (if required)
-# NOTE this help doc for creating GitHub Auth token: https://medium.com/@ginnyfahs/github-error-authentication-failed-from-command-line-3a545bfd0ca8
-
-Password for 'https://github.com': <password or Auth token if 2-factor>
-
 # switch to mainline
 git checkout mainline
 
 # in local mainline branch, with changes committed to local feature branch, merge local feature branch to local master branch
-git merge feature/US234567
+git merge Jan2020
 
 # push local mainline to remote origin mainline 
 git push -u origin mainline
 
 # optionally delete local then remote branch (if exists)
-git branch -D feature/US234567
-git push origin --delete feature/US2345670
+git branch -D Jan2020
+git push origin --delete Jan2020
 
 
