@@ -3,7 +3,7 @@ import datetime
 import logging
 import logging.handlers
 
-log_file = 'Demo_PY/app.log'
+log_file = 'Data/app.log'
 logger = logging.getLogger(log_file)
 logger.setLevel(logging.INFO)
 
@@ -18,7 +18,7 @@ handler_console.setLevel(logging.INFO)
 handler_console.setFormatter(log_format_console)
 logger.addHandler(handler_console)
 
-log = logging.getLogger('Demo_PY/app.log')
+log = logging.getLogger('Data/app.log')
 
 def main():
     timestamp_b = pytz.utc.localize(datetime.datetime.utcnow()).astimezone(pytz.timezone("America/Louisville"))
