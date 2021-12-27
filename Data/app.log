@@ -1,2 +1,6 @@
 2021-10-27 14:53:55,946 - python_logging.py - INFO - 'begin session':'2021-10-27 14:53:55.890163-04:00'
 2021-10-27 14:53:55,947 - python_logging.py - INFO - 'end session':'2021-10-27 14:53:55.947625-04:00'
+2021-12-24 17:41:17,547 - python_logging.py - INFO - 'begin session':'2021-12-24 12:41:17.516136-05:00'
+2021-12-24 17:41:17,553 - python_logging.py - INFO - 'end session':'2021-12-24 12:41:17.552919-05:00'
+2021-12-24 17:41:48,802 - python_logging.py - INFO - 'begin session':'2021-12-24 12:41:48.779858-05:00'
+2021-12-24 17:41:48,806 - python_logging.py - INFO - 'end session':'2021-12-24 12:41:48.805901-05:00'

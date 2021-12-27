@@ -60,7 +60,7 @@ def get_release_configuration(release_configuration_file):
 
     return release_configuration ,workbooks ,tableau_servers ,datasource ,internal ,olap ,index
 
-my_release_configuration_file = "IpythonNotebooks/Data/workbook_release.config"
+my_release_configuration_file = "Data/workbook_release.config"
 
 release_configuration ,workbooks ,tableau_servers_scope ,datasource ,internal ,olap ,index  = get_release_configuration(my_release_configuration_file)    
 

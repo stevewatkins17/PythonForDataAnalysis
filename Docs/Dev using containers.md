@@ -12,3 +12,9 @@ SQL Server 2019 container (replace "MYPASSWORD" with your own PW)
 ```
 docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=MYPASSWORD“ -p 1433:1433 --name sql1 -h sql1 -d mcr.microsoft.com/mssql/server:2019-latest
 ```
+
+Azure SQL container
+```
+docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=//Monday7104//' -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge
+
+```
