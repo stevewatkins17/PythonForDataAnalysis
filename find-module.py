@@ -1,5 +1,5 @@
 try:
-    import pytest
+    import pyodbc
 except ModuleNotFoundError as err:
     # Error handling
     print(err)
