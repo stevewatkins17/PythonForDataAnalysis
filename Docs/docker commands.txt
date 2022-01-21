@@ -1,0 +1,206 @@
+
+read -sp "Azure password: " AZ_PASS && echo && az login -u stevewatkins@hchb.com -p $AZ_PASS
+
+az login
+az acr login --name hchbdev
+docker pull hchbdev.azurecr.io/sqlauth:latest
+
+docker exec -it hchbdev_sql bash
+
+sqlcmd -S DBDWH205,1433 -U test_debian -P MyP@ssword1111111111111 -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
+sqlcmd -S DBDWH205 -U test_debian -P MyP@ssword1111111111111 -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
+sqlcmd -S DBDWH205,1433 -U test_debian -P MyP@ssword1111111111111 -d master -Q "SELECT [Col1] FROM [ExcelHealthLocal].[dbo].[T1];"
+
+sqlcmd -S DBDWH205,1433 -E -Q "set nocount on; SELECT [Col1] FROM [ExcelHealthLocal].[dbo].[T1];"
+
+//chk my odbc driver version
+cat /etc/odbcinst.ini
+
+
+//make a base image "debian_pyodbc" from container "debian_odbc_kerb"
+docker commit debian_odbc_kerb debian_pyodbc
+
+// create a new named container from an image that will run and stay running in the background
+docker container run -it --entrypoint bash --name debian_odbc_kerb debian_odbc_sqlcmd
+docker container run -it --entrypoint bash --name debian_python debian_pyodbc
+
+// start the existing named container that will stay running in the background
+docker container start debian_odbc_kerb
+docker container start debian_python
+
+// to work with the started container from bash
+docker exec -it debian_odbc_kerb bash
+docker exec -it debian_python bash
+
+// run a test to make sure our install works
+sqlcmd -S DBDWH205 -U test_debian -P MyP@ssword1111111111111 -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
+sqlcmd -S XBISQL842 -Q "set nocount on; select [MSSQL_server_name] = @@SERVERNAME ,[MSSQL_database_name] = db_name() ,[MSSQL_version] = @@version;"
+
+// bf we install anything
+apt-get update
+
+//get info about kerberous and Distribution Center
+nltest /dsgetdc:hchbcorp.com
+
+//with above results, edit krb5.conf
+// all values must be UPPERCASE: HCHBCORP.COM CPBDC11.HCHBCORP.COM
+nano /etc/krb5.conf
+
+//test 
+kinit STEVEWATKINS@HCHBCORP.COM
+
+sqlcmd -S DBDWH205 -d ExcelHealthLocal -Q "set nocount on; select [MSSQL_server_name] = @@SERVERNAME ,[MSSQL_database_name] = db_name() ,[MSSQL_version] = @@version;"
+sqlcmd -S XBISQL842 -Q "set nocount on; select [MSSQL_server_name] = @@SERVERNAME ,[MSSQL_database_name] = db_name() ,[MSSQL_version] = @@version;"
+
+
+//verify usign klist
+root@2eb4a4a7ed5c:/# klist
+Ticket cache: FILE:/tmp/krb5cc_0
+Default principal: STEVEWATKINS@HCHBCORP.COM
+
+Valid starting     Expires            Service principal
+01/21/22 21:37:52  01/22/22 07:37:52  krbtgt/HCHBCORP.COM@HCHBCORP.COM
+        renew until 01/22/22 21:37:45
+		
+
+// https://github.com/Microsoft/vscode-mssql/blob/main/KERBEROS_HELP.md
+
+-----------------------------------------------------------------------------------------------
+docker run -it --entrypoint bash hchbdev.azurecr.io/sqlauth:latest
+// we install ODBC driver 17 for SQL Server 
+// https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-2017#debian17
+
+apt-get update
+//curl cmd returned error and below installed first
+apt-get update && apt-get install -y gnupg2
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+//apt-get update cmd returned error and below installed first
+apt-get install -y apt-transport-https
+apt-get update -y
+ 
+ 
+//alma linux PY install
+docker run -d --name python almalinux
+docker exec -it python sh
+docker run -it --entrypoint bash almalinux
+
+dnf update && dnf upgrade -y
+dnf install gcc openssl-devel bzip2-devel libffi-devel zlib-devel wget make -y
+wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tar.xz
+tar -xf Python-3.10.0.tar.xz
+cd Python-3.10.0 && ./configure --enable-optimizations
+// get core count
+nproc
+make -j 8
+make altinstall
+dnf install python3-pip
+
+yum install -y unixODBC-devel
+
+----
+
+17.6+, SQL Server ODBC driver cn string:
+server=dmsql325.1f5a714048ad.database.windows.net;database=HCHB_DEV_MI;Authentication=ActiveDirectoryIntegrated;
+
+Server=tcp:xjisql907.222d12f97c19.database.windows.net,1433;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Authentication="Active Directory Integrated";
+
+docker pull mcr.microsoft.com/azure-functions/python
+docker pull mcr.microsoft.com/azure-functions/python:3.0-python3.8
+docker run -it mcr.microsoft.com/azure-functions/python
+
+python:3.8-bullseye
+
+docker run -it --rm python:3.8-bullseye
+docker run -it --rm python:rc
+
+docker run --rm -v C:/Users/stevewatkins/Downloads/CodeLouisville/sw/unittest_mssql:/unittest_mssql python:3.8-buster python --version
+
+docker run -it --entrypoint bash --rm -v C:/Users/stevewatkins/Downloads/CodeLouisville/sw/unittest_mssql:/unittest_mssql python:3.8-bullseye
+
+docker run -it --entrypoint bash --rm -v C:/Users/stevewatkins/Downloads/CodeLouisville/sw/unittest_mssql:/unittest_mssql python:3.8-buster
+
+apt update
+apt-get install unixodbc-dev
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list
+apt-get update
+ACCEPT_EULA=Y apt-get install -y msodbcsql17
+
+apt-get install kinit
+apt-get install krb5-user
+realm = HCHB.LOCAL
+
+python -m pip install --upgrade tableauserverclient
+python -m pip install --upgrade tableaudocumentapi
+python -m pip install --upgrade pyodbc
+python -m pip install --upgrade pyinstaller
+python -m pip install --upgrade pytz
+
+install SQL Server driver 17
+https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15#17
+
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list
+apt-get update
+ACCEPT_EULA=Y apt-get install -y msodbcsql17
+
+-------
+FROM python:3.8-buster
+USER root
+WORKDIR /usr/src/app
+
+RUN python -m pip install --upgrade \
+        parse \
+        realpython-reader
+
+-------
+
+# vscode doesn't work in linux container 
+""" To use Visual Studio Code with the Windows Subsystem for Linux, please install Visual Studio Code in Windows and uninstall the Linux version in WSL. You can then use the `code` command in a WSL terminal just as you would in a normal command prompt."""
+apt install software-properties-common apt-transport-https wget
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -
+add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+apt update
+apt install code
+
+
+
+
+
+docker run --rm -v /home/realpython/code:/app rp python /app/headlines.py
+
+wsl.exe --set-version Ubuntu 2
+
+Server=tcp:myserver.database.windows.net;Authentication=Active Directory Integrated;Database=mydatabase;
+
+Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Database=mydatabase;
+
+Their service accounts should be synced to AAD through AAD Connect (or equivalent) and the Seamless SSO should be enabled.
+
+
+TITLE: Connect to Server
+------------------------------
+
+Cannot connect to dmsql325.1f5a714048ad.database.windows.net.
+
+------------------------------
+ADDITIONAL INFORMATION:
+
+One or more errors occurred. (mscorlib)
+
+------------------------------
+
+One or more errors occurred. (mscorlib)
+
+------------------------------
+
+Could not discover endpoint for Integrate Windows Authentication. Check your ADFS settings. It should support Integrate Widows Authentication for WS-Trust 1.3 or WS-Trust 2005. (System.Data)
+
+------------------------------
+BUTTONS:
+
+OK
+------------------------------
+
+
