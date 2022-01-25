@@ -7,9 +7,9 @@ docker pull hchbdev.azurecr.io/sqlauth:latest
 
 docker exec -it hchbdev_sql bash
 
-sqlcmd -S DBDWH205,1433 -U test_debian -P MyP@ssword1111111111111 -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
-sqlcmd -S DBDWH205 -U test_debian -P MyP@ssword1111111111111 -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
-sqlcmd -S DBDWH205,1433 -U test_debian -P MyP@ssword1111111111111 -d master -Q "SELECT [Col1] FROM [ExcelHealthLocal].[dbo].[T1];"
+sqlcmd -S DBDWH205,1433 -U test_debian -P MyPW -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
+sqlcmd -S DBDWH205 -U test_debian -P MyPW -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
+sqlcmd -S DBDWH205,1433 -U test_debian -P MyPW -d master -Q "SELECT [Col1] FROM [ExcelHealthLocal].[dbo].[T1];"
 
 sqlcmd -S DBDWH205,1433 -E -Q "set nocount on; SELECT [Col1] FROM [ExcelHealthLocal].[dbo].[T1];"
 
