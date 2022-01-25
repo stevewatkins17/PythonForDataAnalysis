@@ -33,7 +33,7 @@ docker exec -it debian_odbc_kerb bash
 docker exec -it debian_python bash
 
 // run a test to make sure our install works
-sqlcmd -S DBDWH205 -U test_debian -P MyP@ssword1111111111111 -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
+sqlcmd -S DBDWH205 -U test_debian -P MyPW -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
 sqlcmd -S XBISQL842 -Q "set nocount on; select [MSSQL_server_name] = @@SERVERNAME ,[MSSQL_database_name] = db_name() ,[MSSQL_version] = @@version;"
 
 // bf we install anything
