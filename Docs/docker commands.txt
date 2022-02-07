@@ -5,6 +5,9 @@ az login
 az acr login --name hchbdev
 docker pull hchbdev.azurecr.io/sqlauth:latest
 
+docker commit b936aa17e2e5 sw7104/py_cl:latest
+docker push sw7104/py_cl:latest
+
 docker exec -it hchbdev_sql bash
 
 sqlcmd -S DBDWH205,1433 -U test_debian -P MyPW -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
