@@ -39,3 +39,10 @@ $ netstat -tulpn | grep LISTEN
 $ lsof -i -P -n | grep LISTEN
 $ echo | openssl s_client -servername 16bf042b4efc -connect 16bf042b4efc | openssl x509 -noout -dates
 $ openssl x509 -enddate -noout -in /etc/ssl/cert.pem
+
+# SQL Server
+# create symlink for sqlcmd
+$ ln -sfn /opt/mssql-tools/bin/sqlcmd /usr/bin/sqlcmd
+$ /opt/mssql-tools/bin/sqlcmd -S 172.17.0.1,1433 -U SA -P 'MyP@ssword1' -Q "select [I] = @@servername;"
+
+
