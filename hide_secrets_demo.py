@@ -25,7 +25,7 @@ def main():
 
     DARKSKY_API_KEY = get_key_env("DARKSKY_API_KEY")
     DARKSKY_API_KEY_demo = DARKSKY_API_KEY.replace(DARKSKY_API_KEY[0:9], "**********", 1)
-    print("BEST Practice using 'environment' variable")
+    print("BEST Practice using OS 'environment' variable")
     print(f"DARKSKY_API_KEY = {DARKSKY_API_KEY_demo}")
 
 if __name__ == "__main__":
