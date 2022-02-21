@@ -1,7 +1,8 @@
 import json
 import os
 from dotenv import load_dotenv 
-load_dotenv("/etc/environment")
+load_dotenv("/etc/environment") # uses linux environment file
+#load_dotenv() # uses local .env
 
 def get_key_env(key_name):
     """returns the value of the key - from OS env file -- BEST PRACTICE METHOD """
