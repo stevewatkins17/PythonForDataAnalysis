@@ -1,13 +1,13 @@
 # create a container from image
 docker container run -it --entrypoint bash --name prod_kerb hchbprod.azurecr.io/base/kerberos:test
-docker container run -it --entrypoint bash --name demo_secrets python:3.8.12-alpine
+docker container run -it --rm --entrypoint sh --name demo_secrets cl-slim
 
 # declarative script
 # from base container, create runtime version, having removed all the dev/test stuff
 $ docker container create --name mybase_container mybase_image:latest
 $ docker container cp mylocalfile.py mybase_container:/usr/share/myproject/mysubdir/mylocalfile.py
 $ docker container commit mybase_container mycustom_runtime_image_frombase_container
-$ docker container -rm mybase_container
+
 
 # imperative script
 # dockerfile
@@ -16,6 +16,7 @@ $ COPY mylocalfile.py /usr/share/myproject/mysubdir/mylocalfile.py
 
 $ cd /dockerfiles
 ~/dockerfiles $ docker build --tag my_runtime_tag .
+$ docker build --tag cl-slim .
 
 
 #testing and debug
@@ -46,4 +47,6 @@ $ openssl x509 -enddate -noout -in /etc/ssl/cert.pem
 $ ln -sfn /opt/mssql-tools/bin/sqlcmd /usr/bin/sqlcmd
 $ /opt/mssql-tools/bin/sqlcmd -S 172.17.0.1,1433 -U SA -P 'MyP@ssword1' -Q "select [I] = @@servername;"
 
+
+cp -R /Users/stevewatkins/Downloads/CodeLouisville/PythonForDataAnalysis /Users/stevewatkins/Downloads/CodeLouisville/mydocker/dockerbuild
 
