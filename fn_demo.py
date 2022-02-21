@@ -74,7 +74,7 @@ def main(mydictionary):  # same as "import_type ,**kwargs"
     return 0
 
 if __name__ == "__main__":
-    #DARKSKY_API_KEY = get_key_env("DARKSKY_API_KEY")
+    #DARKSKY_API_KEY = get_key_env("DARKSKY_API_KEY") #requires root user
     DARKSKY_API_KEY = get_local_env_key("DARKSKY_API_KEY" ,".env")
     mydictionary = {"import_type":"weather_on_date" ,"DARKSKY_API_KEY":DARKSKY_API_KEY ,"latitude":"38.178164" ,"longitude":"-85.793976" ,"YYYYMMDD":"2002-02-20" ,"TimeOffset":"11:00:00-0400"}
     main(mydictionary)

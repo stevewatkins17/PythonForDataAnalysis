@@ -1,5 +1,6 @@
 # create a container from image
 docker container run -it --entrypoint bash --name prod_kerb hchbprod.azurecr.io/base/kerberos:test
+docker container run -it --entrypoint bash --name demo_secrets python:3.8.12-alpine
 
 # declarative script
 # from base container, create runtime version, having removed all the dev/test stuff
