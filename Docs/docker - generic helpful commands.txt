@@ -1,28 +1,32 @@
 # create a container from image
-docker container run -it --entrypoint bash --name prod_kerb hchbprod.azurecr.io/base/kerberos:test
-docker container run -it --rm --entrypoint sh --name demo_secrets cl-slim
+$ docker container run -it --entrypoint sh --name prod_kerb hchbprod.azurecr.io/base/kerberos:5.0
+$ docker container run --rm -it --entrypoint sh hchbprod.azurecr.io/base/kerberos:5.0
+$ docker container run --rm -it --entrypoint sh sw
+$ docker container run --rm -it --entrypoint sh -v C:/Users/stevewatkins/Downloads/CodeLouisville/sw/halfwayhouse:/tmp/halfwayhouse sw
+$ docker container run --rm -it --entrypoint sh debian_pyodbc
 
 # declarative script
 # from base container, create runtime version, having removed all the dev/test stuff
 $ docker container create --name mybase_container mybase_image:latest
 $ docker container cp mylocalfile.py mybase_container:/usr/share/myproject/mysubdir/mylocalfile.py
 $ docker container commit mybase_container mycustom_runtime_image_frombase_container
+$ docker container -rm mybase_container
 
+$ docker build --no-cache -t sw ./mydockerfile
+$ docker build -t sw ./mydockerfile
 
-# imperative script
-# dockerfile
-$ FROM mybase_image:latest
-$ COPY mylocalfile.py /usr/share/myproject/mysubdir/mylocalfile.py
-
-$ cd /dockerfiles
-~/dockerfiles $ docker build --tag my_runtime_tag .
-$ docker build --tag cl-slim .
-
+$ docker volume create unittest_mssql
+$ docker network unittest_mssql
+$ docker run -it --rm -d -v unittest_mssql:/usr/unittest_mssql \
+  --network unittest_mssql \
+  --name unittest_mssql \
+  prod_sql_python
 
 #testing and debug
-$ bat 1-build.sh #runs above docker commands to build ready-to-run container; use "set -x" at script start to display 
+$ bat 1-build.sh ////runs above docker commands to build ready-to-run container; use "set -x" at script start to display 
 $ docker container diff mycontainer
 $ docker image history -H --no-trunc hchbprod.azurecr.io/base/kerberos
+$ docker exec -it debian_python bash
 
 # what is my os/kernal
 $ uname -a
@@ -30,10 +34,10 @@ $ lsb_release -a
 $ cat /etc/*release*
 $ cat /etc/*_version /etc/*release* && uname -a
 
-# get containers from AZ 
+# get images from AZ 
 $ az login
 $ az acr login --name hchbprod
-$ docker pull hchbprod.azurecr.io/base/kerberos:latest
+$ docker pull hchbprod.azurecr.io/base/kerberos:5.0
 
 #my linux server name and ports
 $ hostname
@@ -46,7 +50,23 @@ $ openssl x509 -enddate -noout -in /etc/ssl/cert.pem
 # create symlink for sqlcmd
 $ ln -sfn /opt/mssql-tools/bin/sqlcmd /usr/bin/sqlcmd
 $ /opt/mssql-tools/bin/sqlcmd -S 172.17.0.1,1433 -U SA -P 'MyP@ssword1' -Q "select [I] = @@servername;"
+# test SQLCMD
+$ sqlcmd -S DBDWH205 -U test_debian17 -P MyP@ssword17 -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
+$ sqlcmd -S DBDWH205.hchb.local -E -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
+$ sqlcmd -S tabds-qa.hchb.local -E -d BI_EDW_AMEDISYS -Q "set nocount on; select [i] = convert(varchar(25) ,@@SERVERNAME) ,[db] = convert(varchar(25) ,db_name()) ,[datetime] = convert(char(19) ,(convert(datetime2(0) , sysdatetime())) );"
+$ sqlcmd -S AGENCY-CONFIGURATION-INFO-LOU-HNA.hchb.local -d Configuration -Q "set nocount on; select [i] = convert(varchar(20) ,@@SERVERNAME) ,[db] = convert(varchar(25) ,db_name()) ,[datetime] = convert(char(19) ,(convert(datetime2(0) , sysdatetime())) );"
 
+# find things
+$ find . -name thisfile.txt
+$ whereis kinit
 
-cp -R /Users/stevewatkins/Downloads/CodeLouisville/PythonForDataAnalysis /Users/stevewatkins/Downloads/CodeLouisville/mydocker/dockerbuild
-
+# create keytab for MIT kerberos -
+$ ktutil 
+ktutil: addent -password -p STEVEWATKINS@HCHBCORP.COM -k 1 -e rc4-hmac
+Password for STEVEWATKINS@HCHBCORP.COM:
+ktutil: addent -password -p STEVEWATKINS@HCHBCORP.COM -k 1 -e aes256-cts
+Password for STEVEWATKINS@HCHBCORP.COM:
+ktutil: wkt /etc/ssl/stevewatkins.keytab
+ktutil: quit
+$ env KRB5_TRACE=/dev/stdout kinit STEVEWATKINS@HCHBCORP.COM -k -t /etc/ssl/stevewatkins.keytab
+$ kinit -V -k -t /etc/ssl/stevewatkins.keytab -f -p -l 10h -r 7d STEVEWATKINS@HCHBCORP.COM
