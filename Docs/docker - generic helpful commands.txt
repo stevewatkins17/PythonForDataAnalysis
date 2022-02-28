@@ -53,7 +53,7 @@ $ /opt/mssql-tools/bin/sqlcmd -S 172.17.0.1,1433 -U SA -P 'MyP@ssword1' -Q "sele
 # test SQLCMD
 $ sqlcmd -S DBDWH205 -U test_debian17 -P MyP@ssword17 -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
 $ sqlcmd -S DBDWH205.hchb.local -E -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
-$ sqlcmd -S tabds-qa.hchb.local -E -d BI_EDW_AMEDISYS -Q "set nocount on; select [i] = convert(varchar(25) ,@@SERVERNAME) ,[db] = convert(varchar(25) ,db_name()) ,[datetime] = convert(char(19) ,(convert(datetime2(0) , sysdatetime())) );"
+$ sqlcmd -S tabds-qa.hchb.local -E -d BI_EDW_MYCUST -Q "set nocount on; select [i] = convert(varchar(25) ,@@SERVERNAME) ,[db] = convert(varchar(25) ,db_name()) ,[datetime] = convert(char(19) ,(convert(datetime2(0) , sysdatetime())) );"
 $ sqlcmd -S AGENCY-CONFIGURATION-INFO-LOU-HNA.hchb.local -d Configuration -Q "set nocount on; select [i] = convert(varchar(20) ,@@SERVERNAME) ,[db] = convert(varchar(25) ,db_name()) ,[datetime] = convert(char(19) ,(convert(datetime2(0) , sysdatetime())) );"
 
 # find things
