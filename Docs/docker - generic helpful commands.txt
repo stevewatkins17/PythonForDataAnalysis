@@ -63,10 +63,10 @@ $ whereis kinit
 # create keytab for MIT kerberos -
 $ ktutil 
 ktutil: addent -password -p STEVEWATKINS@HCHBCORP.COM -k 1 -e rc4-hmac
-Password for STEVEWATKINS@HCHBCORP.COM:
-ktutil: addent -password -p STEVEWATKINS@HCHBCORP.COM -k 1 -e aes256-cts
-Password for STEVEWATKINS@HCHBCORP.COM:
+Password for STEVEWATKINS@MYCOMPANY.COM:
+ktutil: addent -password -p STEVEWATKINS@MYCOMPANY.COM -k 1 -e aes256-cts
+Password for STEVEWATKINS@MYCOMPANY.COM:
 ktutil: wkt /etc/ssl/stevewatkins.keytab
 ktutil: quit
-$ env KRB5_TRACE=/dev/stdout kinit STEVEWATKINS@HCHBCORP.COM -k -t /etc/ssl/stevewatkins.keytab
-$ kinit -V -k -t /etc/ssl/stevewatkins.keytab -f -p -l 10h -r 7d STEVEWATKINS@HCHBCORP.COM
+$ env KRB5_TRACE=/dev/stdout kinit STEVEWATKINS@MYCOMPANY.COM -k -t /etc/ssl/stevewatkins.keytab
+$ kinit -V -k -t /etc/ssl/stevewatkins.keytab -f -p -l 10h -r 7d STEVEWATKINS@MYCOMPANY.COM
