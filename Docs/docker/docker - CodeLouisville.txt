@@ -1,0 +1,3 @@
+$ cd C:\Users\stevewatkins\Downloads\CodeLouisville\sw\PythonForDataAnalysis\Docs\docker
+$ docker build -t cl ./mydockerfile
+$ docker container run --rm -it --entrypoint bash cl
