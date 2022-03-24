@@ -14,6 +14,7 @@ $ docker container -rm mybase_container
 
 $ docker build --no-cache -t sw ./mydockerfile
 $ docker build -t sw ./mydockerfile
+$ docker build -t CL ./mydockerfile
 
 $ docker volume create unittest_mssql
 $ docker network unittest_mssql
@@ -21,6 +22,11 @@ $ docker run -it --rm -d -v unittest_mssql:/usr/unittest_mssql \
   --network unittest_mssql \
   --name unittest_mssql \
   prod_sql_python
+
+# unittest_mssql.py
+$ docker build -t sw ./mydockerfile
+$ docker container run --rm -it --entrypoint sh sw
+$ docker cp b925a3fdb9e2:"/opt/unittest_mssql/output_process/Loc_DetectedWithZeroUnitsOrDollars - V_CELOC_NonPPS V2 - TRN (20220324164931).json" .
 
 #testing and debug
 $ bat 1-build.sh ////runs above docker commands to build ready-to-run container; use "set -x" at script start to display 
