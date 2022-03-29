@@ -31,6 +31,11 @@ $ docker cp unittest_mssql_container:"/opt/unittest_mssql/output_process/unittes
 $ docker container run --rm -it --name unittest_mssql_container --entrypoint sh unittest_mssql_image
 $ docker cp b925a3fdb9e2:"/opt/unittest_mssql/output_process/Loc_DetectedWithZeroUnitsOrDollars - V_CELOC_NonPPS V2 - TRN (20220324164931).json" .
 
+# get images from AZ 
+$ az login
+$ az acr login --name hchbprod
+$ docker pull hchbprod.azurecr.io/base/kerberos:5.0
+
 #testing and debug
 $ bat 1-build.sh ////runs above docker commands to build ready-to-run container; use "set -x" at script start to display 
 $ docker container diff mycontainer
@@ -43,11 +48,6 @@ $ lsb_release -a
 $ cat /etc/*release*
 $ cat /etc/*_version /etc/*release* && uname -a
 
-# get images from AZ 
-$ az login
-$ az acr login --name hchbprod
-$ docker pull hchbprod.azurecr.io/base/kerberos:5.0
-
 #my linux server name and ports
 $ hostname
 $ netstat -tulpn | grep LISTEN
@@ -59,11 +59,18 @@ $ openssl x509 -enddate -noout -in /etc/ssl/cert.pem
 # create symlink for sqlcmd
 $ ln -sfn /opt/mssql-tools/bin/sqlcmd /usr/bin/sqlcmd
 $ /opt/mssql-tools/bin/sqlcmd -S 172.17.0.1,1433 -U SA -P 'MyP@ssword1' -Q "select [I] = @@servername;"
+
 # test SQLCMD
 $ sqlcmd -S DBDWH205 -U test_debian17 -P MyP@ssword17 -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
 $ sqlcmd -S DBDWH205.hchb.local -E -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
 $ sqlcmd -S tabds-qa.hchb.local -E -d BI_EDW_MYCUST -Q "set nocount on; select [i] = convert(varchar(25) ,@@SERVERNAME) ,[db] = convert(varchar(25) ,db_name()) ,[datetime] = convert(char(19) ,(convert(datetime2(0) , sysdatetime())) );"
 $ sqlcmd -S AGENCY-CONFIGURATION-INFO-LOU-HNA.hchb.local -d Configuration -Q "set nocount on; select [i] = convert(varchar(20) ,@@SERVERNAME) ,[db] = convert(varchar(25) ,db_name()) ,[datetime] = convert(char(19) ,(convert(datetime2(0) , sysdatetime())) );"
+$ sqlcmd -S TBSQL839.hchb.local -E -d DBA_ADMIN -Q "set nocount on; select [i] = convert(varchar(25) ,@@SERVERNAME) ,[db] = convert(varchar(25) ,db_name()) ,[datetime] = convert(char(19) ,(convert(datetime2(0) , sysdatetime())) );"
+$ sqlcmd -S 10.160.128.54,1433 -E -d ExcelHealthLocal -Q "set nocount on; SELECT [Col1] FROM [dbo].[T1];"
+$ sqlcmd -S tcp:10.160.123.26,49359 -E -d HCHB_KAHHHTRN2 -Q "set nocount on; select [i] = convert(varchar(25) ,@@SERVERNAME) ,[db] = convert(varchar(25) ,db_name()) ,[datetime] = convert(char(19) ,(convert(datetime2(0) , sysdatetime())) );"
+$ sqlcmd -S 10.160.123.26,49359 -E -d HCHB_KAHHHTRN2 -Q "set nocount on; select [i] = convert(varchar(25) ,@@SERVERNAME) ,[db] = convert(varchar(25) ,db_name()) ,[datetime] = convert(char(19) ,(convert(datetime2(0) , sysdatetime())) );"
+$ sqlcmd -S tcp:10.160.123.26,-16177 -E -d HCHB_KAHHHTRN2 -Q "set nocount on; select [i] = convert(varchar(25) ,@@SERVERNAME) ,[db] = convert(varchar(25) ,db_name()) ,[datetime] = convert(char(19) ,(convert(datetime2(0) , sysdatetime())) );"
+$ sqlcmd -S 10.160.123.26,-16177 -E -d HCHB_KAHHHTRN2 -Q "set nocount on; select [i] = convert(varchar(25) ,@@SERVERNAME) ,[db] = convert(varchar(25) ,db_name()) ,[datetime] = convert(char(19) ,(convert(datetime2(0) , sysdatetime())) );"
 
 # find things
 $ find . -name thisfile.txt
