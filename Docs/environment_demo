@@ -1,0 +1,7 @@
+
+PATH=/usr/local/share/nvm/current/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+LANG=C.UTF-8
+LC_ALL=C.UTF-8
+NVM_DIR=/usr/local/share/nvm
+NVM_SYMLINK_CURRENT=true
+DARKSKY_API_KEY=**********c81570744b620ba68c3e6

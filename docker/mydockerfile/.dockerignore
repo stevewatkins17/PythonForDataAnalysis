@@ -1,0 +1,14 @@
+.dockerignore
+.env
+.git
+.gitignore
+.vs
+.vscode
+.config
+.sonarqube
+.sonarlint
+*/bin
+artifacts
+!artifacts/bin/*
+*/obj
+**/.toolstarget

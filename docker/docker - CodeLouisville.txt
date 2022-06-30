@@ -1,0 +1,3 @@
+$ cd C:\Users\stevewatkins\Downloads\CodeLouisville\sw\PythonForDataAnalysis\docker
+$ docker build -t anaconda ./mydockerfile
+$ docker container run --rm -it --entrypoint bash anaconda
