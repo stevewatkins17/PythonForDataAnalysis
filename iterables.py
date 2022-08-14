@@ -78,3 +78,17 @@ print("--------------------")
 for ofs in release_configuration["other_files"]:
     print(f"other_files = {ofs}")
 
+# let's copy a key from 2 dicts and create a 3rd new dict
+
+dictA = {"mykey1":"valueA" ,"mykey2":{"Pass":2 ,"Fail":0 ,"NA":0 ,"null":10}}
+dictB = {"mykey1":"valueB" ,"mykey2":{"Pass":0 ,"Fail":1 ,"NA":1 ,"null":0}}
+dict_final = {}
+print(dictA)
+print(dictB)
+dict_final["dictA"] = dictA["mykey2"]
+dict_final["dictB"] = dictB["mykey2"]
+print(dict_final)
+
+
+
+
