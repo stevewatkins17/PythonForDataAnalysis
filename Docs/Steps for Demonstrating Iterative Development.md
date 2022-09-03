@@ -4,28 +4,31 @@ Creatio ex nihilo
 # Step 0 - create repo "myhello"
 - on Github
 - on local file system 
-/Downloads/MyRepos/myhello
+> cd Downloads
 
-# Step 1 - clone or pull repo "MyHello"
+# Step 1 - clone or pull repo "myhello"
 from terminal or git bash:
 
 > git clone https://github.com/stevewatkins17/myhello.git
 > cd myhello
 > ls
 
-# Step 2 - create "hello.py"
+# Step 2 - create "test_hello.py" and "hello.py"
+> touch test_hello.py
 > touch hello.py
+
+import hello
+> python3 test_hello.py
+
+# Step 3 - edit "hello.py"
 
 print("Hello World!")
 
 > python3 hello.py
 
-# Step 3 - create "test_hello.py"
-> touch test_hello.py
-import hello
-> python3 test_hello.py
 
 # Step 4 - complete iteratation (add --> commit --> push)
+git status
 git add .
 git commit -m "init commit hello.py - test success"
 git push -u origin main
@@ -38,6 +41,14 @@ verify new files in github repo
 # Step 6 - enhance "hello.py"
 def print_hello():
     print("Hello World!")
+
+def main():
+    print_hello()
+
+print("Special Hello World!")
+
+if __name__ == '__main__':
+    main()
 
 # Step 7 - test enhancement with "test_hello.py"
 > python3 test_hello.py
