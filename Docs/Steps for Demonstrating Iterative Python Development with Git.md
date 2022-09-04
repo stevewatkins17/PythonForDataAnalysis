@@ -1,5 +1,12 @@
-Steps for Demonstrating Iterative Development
-Creatio ex nihilo 
+Steps for Demonstrating Iterative Python Development with Git 
+
+Creatio ex nihilo - we start with nothing.
+
+We demonstrate how to:
+- create a github repo
+- create & run a Python test script
+- create & run a Python script
+- "giterate" that is, perform a basic code change iteration using git
 
 # Step 0 - create repo "myhello"
 - on Github
@@ -97,7 +104,7 @@ git add .
 git commit -m "enhance hello.py make FN with return - test success"
 git push -u origin main
 
-# Other to demo
+# Extras
 ## delete from local 
 > rm -rf myhello
 ## restore
