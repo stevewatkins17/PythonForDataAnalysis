@@ -115,6 +115,7 @@ celerybeat.pid
 # Environments
 .env
 .env_demo
+.env_demo_darksky
 .venv
 env/
 venv/
