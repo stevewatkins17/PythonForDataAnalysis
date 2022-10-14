@@ -28,6 +28,7 @@ $ docker build -t unittest_mssql_image ./mydockerfile
 $ docker container run --rm -d --name unittest_mssql_container unittest_mssql_image
 $ docker cp unittest_mssql_container:"/opt/unittest_mssql/output_process/unittest_results.json" .
 
+$ docker build --no-cache -t unittest_mssql_image ./mydockerfile
 $ docker container run --rm -it --name unittest_mssql_container --entrypoint sh unittest_mssql_image
 $ docker cp b925a3fdb9e2:"/opt/unittest_mssql/output_process/Loc_DetectedWithZeroUnitsOrDollars - V_CELOC_NonPPS V2 - TRN (20220324164931).json" .
 
