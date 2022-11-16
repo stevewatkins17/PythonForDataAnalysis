@@ -28,8 +28,15 @@ $ docker build -t unittest_mssql_image ./mydockerfile
 $ docker container run --rm -d --name unittest_mssql_container unittest_mssql_image
 $ docker cp unittest_mssql_container:"/opt/unittest_mssql/output_process/unittest_results.json" .
 
+$ docker build --no-cache -t unittest_mssql_image ./mydockerfile
 $ docker container run --rm -it --name unittest_mssql_container --entrypoint sh unittest_mssql_image
 $ docker cp b925a3fdb9e2:"/opt/unittest_mssql/output_process/Loc_DetectedWithZeroUnitsOrDollars - V_CELOC_NonPPS V2 - TRN (20220324164931).json" .
+
+# switcheroo.py
+$ docker build --no-cache -t switcheroo_image ./mydockerfile
+$ docker container run --rm -it --name switcheroo_container -v switcheroo_output_process:/opt/scalable_switcheroo/data/output_process --entrypoint sh switcheroo_image
+sh# python switcheroo.py -I "XAISQL841.hchb.local,1433" -D "TEMP_ALPINE_20220429100704027_STEVEWATKINS" -L "DEBUG" -P "{'ValidationType':'table_column_definition' ,'source_schema':'dbo' ,'source_name':'SCHED' ,'target_schema':'mirrordbosched' ,'column_list':[]}"
+$ docker cp -a switcheroo_container:/opt/scalable_switcheroo/data/output_process/  C:/Users/stevewatkins/Downloads/DataServices_REPO/DataServices/docker_repo/results_history/
 
 # get images from AZ 
 $ az login
@@ -40,13 +47,16 @@ $ docker pull hchbprod.azurecr.io/base/kerberos:5.0
 $ bat 1-build.sh ////runs above docker commands to build ready-to-run container; use "set -x" at script start to display 
 $ docker container diff mycontainer
 $ docker image history -H --no-trunc hchbprod.azurecr.io/base/kerberos
-$ docker exec -it debian_python bash
+$ docker exec -it switcheroo_container sh
 
 # what is my os/kernal
 $ uname -a
 $ lsb_release -a
 $ cat /etc/*release*
 $ cat /etc/*_version /etc/*release* && uname -a
+
+# update my WSL2 debian
+$ sudo apt-get update && sudo apt-get upgrade
 
 #my linux server name and ports
 $ hostname
@@ -76,13 +86,15 @@ $ sqlcmd -S 10.160.123.26,-16177 -E -d HCHB_KAHHHTRN2 -Q "set nocount on; select
 $ find . -name thisfile.txt
 $ whereis kinit
 
-# create keytab for MIT kerberos -
+# kerb login & create keytab for MIT kerberos -
+$ kinit STEVEWATKINS@HCHBCORP.COM
+$ kdestroy
 $ ktutil 
 ktutil: addent -password -p STEVEWATKINS@HCHBCORP.COM -k 1 -e rc4-hmac
-Password for STEVEWATKINS@MYCOMPANY.COM:
-ktutil: addent -password -p STEVEWATKINS@MYCOMPANY.COM -k 1 -e aes256-cts
-Password for STEVEWATKINS@MYCOMPANY.COM:
+Password for STEVEWATKINS@HCHBCORP.COM:
+ktutil: addent -password -p STEVEWATKINS@HCHBCORP.COM -k 1 -e aes256-cts
+Password for STEVEWATKINS@HCHBCORP.COM:
 ktutil: wkt /etc/ssl/stevewatkins.keytab
 ktutil: quit
-$ env KRB5_TRACE=/dev/stdout kinit STEVEWATKINS@MYCOMPANY.COM -k -t /etc/ssl/stevewatkins.keytab
-$ kinit -V -k -t /etc/ssl/stevewatkins.keytab -f -p -l 10h -r 7d STEVEWATKINS@MYCOMPANY.COM
+$ env KRB5_TRACE=/dev/stdout kinit STEVEWATKINS@HCHBCORP.COM -k -t /etc/ssl/stevewatkins.keytab
+$ kinit -V -k -t /etc/ssl/stevewatkins.keytab -f -p -l 10h -r 7d STEVEWATKINS@HCHBCORP.COM
