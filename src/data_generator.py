@@ -1,6 +1,9 @@
+# data_generator.py
 import random
 
+
 def create_csv(myfile ,linecount ,list0 ,list1 ,list2):
+    """ we generate and persist a csv file """
     with open(myfile, "w") as file:
         # Writing data to a file
         for _ in range(linecount):
@@ -12,11 +15,12 @@ def create_csv(myfile ,linecount ,list0 ,list1 ,list2):
     return 0
 
 def main():
+    """ we pass input variables to FN that generates and persists a csv file """
     linecount = 20000
     maincourse = ["" ,"haggis" ,"Miquel's Pizza" ,"falafel" ,"pesce con vivo" ,"hasenpfeffer" ,"green coconut curry" ,"ciopinno" ,"potato pie"]
     veg = ["" ,"potato au gratin" ,"Chef John 5-spice carrots" ,"kale" ,"broccali" ,"brussels sprouts" ,"cauliflower" ,"peas" ,"roasted green beans"]
     dessert = ["" ,"tavuk göğsü" ,"creme brulee" ,"Mizu Shingen Mochi" ,"green chili chocolate tart" ,"melopita" ,"saffron kheer" ,"cinnamon brioche" ,"mom's peach cobbler" ,"cherry ice cream"]
-    myfile = "Data/orders.csv"
+    myfile = "../data/orders.csv"
 
     csv_create_result = create_csv(myfile ,linecount ,maincourse ,veg ,dessert)
     return csv_create_result
