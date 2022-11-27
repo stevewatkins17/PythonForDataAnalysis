@@ -1,4 +1,5 @@
-#conftest.py
+# conftest.py
+# _conftest.py --> disabled
 import pytest
 from .. src import fileHandling as fh
 

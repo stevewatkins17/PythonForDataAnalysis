@@ -8,8 +8,7 @@ def GetDirs(path):
     p = pathlib.Path(path)
     dirlist = [x for x in p.iterdir() if x.is_dir()]
     return dirlist
-        
-    
+         
 def UnzipFile(filePath, destinationDirectory):    
     zf = z.ZipFile(f"{filePath}","r")
     zf.extractall(f"{destinationDirectory}")
