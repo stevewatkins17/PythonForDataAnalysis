@@ -23,15 +23,13 @@ def UnzipFile(filePath, destinationDirectory):
 def DeleteFile(target_file):
     if os.path.isfile(target_file):
         os.remove(target_file)
-        return 1
-    else:
         return 0
+    else:
+        return 1
     
 def DeleteDir(target_dir_to_delete):
     try:
         shutil.rmtree(target_dir_to_delete)
-        return 1
+        return 0
     except OSError as e:
-        return 0    
-    
-
+        return 1 
