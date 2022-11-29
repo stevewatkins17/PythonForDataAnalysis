@@ -59,10 +59,14 @@ def get_release_configuration(release_configuration_file):
         olap = str(release_configuration["other_files"]["olap"])
         index = str(release_configuration["other_files"]["index"])
 
+    print(release_configuration)
+    print("--------------------")
+
     return release_configuration ,workbooks ,tableau_servers ,datasource ,internal ,olap ,index
 
-def simple_dictionary(thisdictionary):
-    for w in thisdictionary:
+def simple_iter(thisiterable):
+    print(type(thisiterable))
+    for w in thisiterable:
         print(f"name = {w}")
     print("--------------------")
     return 0
@@ -79,27 +83,61 @@ def combine_dictionaries():
     dict_combined["dictB"] = dictB["mykey2"]
     print("dict_combined")
     print(dict_combined)
+    print("--------------------")
 
     return dict_combined
+
+def unpack_dictionary(mydictionary):
+    """ multiple ways to iter through a dict """
+    print(mydictionary)
+    print("--------------------")
+
+    """ we print the name of the key as a string object type"""
+    for d in mydictionary:
+        print(d)
+    print("--------------------")
+
+    """ we iter by keys """
+    for k in mydictionary.keys():
+        print(f"'key':'{k}'")
+    print("--------------------")
+
+    """ we iter by values """
+    for v in mydictionary.values():
+        print(f"'value':'{v}'")
+    print("--------------------")
+
+    """ we iter by both key and value """
+    for k,v in mydictionary.items():
+        print(f"'key':'{k}' ,'value':'{v}'")
+    print("--------------------")
+
+
+    return 0
 
 def main():
     my_release_configuration_file = "../data/workbook_release.config"
 
-    string_as_dict = iter_immutable_obj("Hello")
-    iter_simple_range(5)
-    iter_complex_range(10, 6, -2)
-    tuple_as_dict = iter_immutable_obj(("Hello" ,"World!"))
-    dict_as_dict = iter_immutable_obj(string_as_dict)
-    mega_tuple = fun_with_tuples(("Q" ,"Z") ,("V" ,"W"))
-    mylist = listomania(mega_tuple)
+    returncode = 0
+    try:
+        string_as_dict = iter_immutable_obj("Hello")
+        iter_simple_range(5)
+        iter_complex_range(10, 6, -2)
+        tuple_as_dict = iter_immutable_obj(("Hello" ,"World!"))
+        dict_as_dict = iter_immutable_obj(string_as_dict)
+        mega_tuple = fun_with_tuples(("Q" ,"Z") ,("V" ,"W"))
+        mylist = listomania(mega_tuple)
 
-    release_configuration ,workbooks ,tableau_servers_scope ,datasource ,internal ,olap ,index  = get_release_configuration(my_release_configuration_file)    
-    print(release_configuration)
-    print("--------------------")
-    simple_dictionary(workbooks)
-    simple_dictionary(release_configuration["other_files"])
+        release_configuration ,workbooks ,tableau_servers_scope ,datasource ,internal ,olap ,index  = get_release_configuration(my_release_configuration_file)    
 
-    return 0
+        simple_iter(workbooks)
+        simple_iter(release_configuration["other_files"])
+        combine_dictionaries()
+        unpack_dictionary(release_configuration["other_files"])
+    except:
+        returncode = 1
+        
+    return returncode
 
 if __name__ == '__main__':
     main()
