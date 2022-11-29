@@ -1,50 +1,51 @@
 import json
 
-# EXAMPLE 1 - a string is an iterable (a string is a list of characters)
-myname = "janet"
-x = 1 
+def iter_immutable_obj(imm_obj):
+    """ strings or tuples are immutable objects with custom properties/methods """
+    """ we can transform a string or tuple into a dictionary using the index ID as key """
+    string_as_dict = {}
 
-for i in myname:
-    print(f"letter {x} = {i}")
-    x += 1
+    for index, c in enumerate(imm_obj, start=0):
+        print(f"{index}: '{c}'")
+        string_as_dict[index] = c
 
-print(f"the character in the 4th position of {myname} is {myname[3]}")
-print("--------------------")
+    print("--------------------")
+    print(string_as_dict)
+    print("--------------------")
+    return string_as_dict
 
-# EXAMPLE 2 - a range of numbers
-# # https://pynative.com/python-range-function/
-for i in range(10):
-    print(i)
+def iter_simple_range(stop):
+    for i in range(stop):
+        print(f"simple range: {i}")
+    print("--------------------")
+    return 0
 
-print("--------------------")
+def iter_complex_range(start, stop, step):
+    for i in range(start, stop, step):
+        print(f"complex range: {i}")
+    print("--------------------")
+    return 0
 
-for i in range(10, 0, -2):
-    print(i)
-print("--------------------")
-
-# EXAMPLE 3 - tuples
-mytuple_0 = ("A" ,"B")
-mytuple_1 = ("C" ,"D")
-mytuple_0 = mytuple_0 + mytuple_1
-print(mytuple_0)
-print("--------------------")
-
-print(mytuple_0[2])
-
-# mytuple_0[2] = "Z" #intentional fail
-for character in mytuple_0:
-    print(character)
+def fun_with_tuples(*tuples):
+    mega_tuple = ()
+    for t in tuples:
+        print(f"tuple: {t}")
+        mega_tuple += t
+    print("--------------------")
+    print(mega_tuple)    
+    print("--------------------")
+    return mega_tuple
 
 # EXAMPLE 4 - lists
+def listomania(myobject):
+    mylist = list(myobject)
+    mylist[2] = "Z17"
+    print(mylist)
+    print("--------------------")
 
-mylist = list(mytuple_0)
-mylist[2] = "Z"
-print(mylist[2])
-
-print("--------------------")
+    return mylist 
 
 # EXAMPLE 5 - dictionaries 
-# https://realpython.com/python-dicts/
 
 def get_release_configuration(release_configuration_file):
     """Parse 'workbook_release.config' to retrieve and return runtime params"""  
@@ -60,35 +61,45 @@ def get_release_configuration(release_configuration_file):
 
     return release_configuration ,workbooks ,tableau_servers ,datasource ,internal ,olap ,index
 
-my_release_configuration_file = "Data/workbook_release.config"
+def simple_dictionary(thisdictionary):
+    for w in thisdictionary:
+        print(f"name = {w}")
+    print("--------------------")
+    return 0
 
-release_configuration ,workbooks ,tableau_servers_scope ,datasource ,internal ,olap ,index  = get_release_configuration(my_release_configuration_file)    
+def combine_dictionaries():
+    dictA = {"mykey1":"valueA" ,"mykey2":{"Pass":2 ,"Fail":0 ,"NA":0 ,"null":10}}
+    dictB = {"mykey1":"valueB" ,"mykey2":{"Pass":0 ,"Fail":1 ,"NA":1 ,"null":0}}
+    dict_combined = {}
+    print("dictA")
+    print(dictA)
+    print("dictB")
+    print(dictB)
+    dict_combined["dictA"] = dictA["mykey2"]
+    dict_combined["dictB"] = dictB["mykey2"]
+    print("dict_combined")
+    print(dict_combined)
 
-# release_configuration  = get_release_configuration(my_release_configuration_file)[0]
+    return dict_combined
 
-print(release_configuration)
+def main():
+    my_release_configuration_file = "../data/workbook_release.config"
 
-print("--------------------")
+    string_as_dict = iter_immutable_obj("Hello")
+    iter_simple_range(5)
+    iter_complex_range(10, 6, -2)
+    tuple_as_dict = iter_immutable_obj(("Hello" ,"World!"))
+    dict_as_dict = iter_immutable_obj(string_as_dict)
+    mega_tuple = fun_with_tuples(("Q" ,"Z") ,("V" ,"W"))
+    mylist = listomania(mega_tuple)
 
-for w in workbooks:
-    print(f"workbook name = {w}")
+    release_configuration ,workbooks ,tableau_servers_scope ,datasource ,internal ,olap ,index  = get_release_configuration(my_release_configuration_file)    
+    print(release_configuration)
+    print("--------------------")
+    simple_dictionary(workbooks)
+    simple_dictionary(release_configuration["other_files"])
 
-print("--------------------")
+    return 0
 
-for ofs in release_configuration["other_files"]:
-    print(f"other_files = {ofs}")
-
-# let's copy a key from 2 dicts and create a 3rd new dict
-
-dictA = {"mykey1":"valueA" ,"mykey2":{"Pass":2 ,"Fail":0 ,"NA":0 ,"null":10}}
-dictB = {"mykey1":"valueB" ,"mykey2":{"Pass":0 ,"Fail":1 ,"NA":1 ,"null":0}}
-dict_final = {}
-print(dictA)
-print(dictB)
-dict_final["dictA"] = dictA["mykey2"]
-dict_final["dictB"] = dictB["mykey2"]
-print(dict_final)
-
-
-
-
+if __name__ == '__main__':
+    main()
