@@ -1,1 +1,3 @@
-link to hubway.db: "https://dataquest.io/blog/large_files/hubway.db"
+link to hubway.db: "https://www.dataquest.io/blog/large_files/hubway.db"
+
+

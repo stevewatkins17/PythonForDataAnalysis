@@ -123,6 +123,8 @@ ENV/
 env.bak/
 venv.bak/
 
+# sw demo
+data/hubway.db
 # Spyder project settings
 .spyderproject
 .spyproject
