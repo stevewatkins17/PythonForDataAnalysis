@@ -1,4 +1,4 @@
-# retry_userinput_demo.py
+# python retry_userinput_demo.py -r 2 -p 'enter item from list: '
 import argparse
 
 def get_user_input(prompt ,retry_count):
@@ -22,15 +22,6 @@ def get_user_input(prompt ,retry_count):
     else:
         print(f"After {retry_count} attempts, failed to enter matching value")
 
-def main(prompt ,retry_count):
-    result = get_user_input(prompt ,retry_count)
-
-    if not result:
-        print("Fail")
-    else:
-        """ we stub in a 'pass' msg in place of executing stmts"""
-        print("Pass")
-
 def validate_retries(r):
     try:
         if not r > 0:
@@ -42,9 +33,16 @@ def validate_retries(r):
     else:
         return 0
 
-if __name__ == '__main__':
-    """ note that 'retries' = 0 is intentional bug """
+def main(prompt ,retry_count):
+    result = get_user_input(prompt ,retry_count)
 
+    if not result:
+        print("Fail")
+    else:
+        """ we stub in a 'pass' msg in place of executing stmts"""
+        print("Pass")
+
+if __name__ == '__main__':
     """usage: python retry_userinput_demo.py -r 2 -p 'enter item from list: ' """
     parser = argparse.ArgumentParser(description='retry for input')
 
@@ -53,5 +51,4 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    if validate_retries(args.retries) == 0:
-        main(args.prompt ,args.retries)
+    main(args.prompt ,args.retries)
