@@ -3,9 +3,14 @@ import argparse
 import sys
 import src.retry_userinput_demo as rud
 
-def main():
-    """this is the main function
-    
+def main(prompt ,retry_count):
+    """ this is the main function """
+    result = rud.main(prompt ,retry_count)
+
+    return result
+
+if __name__ == '__main__':
+    """
     usage: python main.py -r 2 -p 'enter item from list: '
     """
     parser = argparse.ArgumentParser(description='Description of your program')
@@ -16,9 +21,4 @@ def main():
 
     print(f"prompt: {args.prompt} ,retry_count: {args.retry_count}")
 
-    result = rud.main(args.prompt ,args.retry_count)
-
-    return result
-
-if __name__ == '__main__':
-    main()
+    main(args.prompt ,args.retry_count)
