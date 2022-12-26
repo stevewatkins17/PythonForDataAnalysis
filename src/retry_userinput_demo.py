@@ -34,13 +34,16 @@ def validate_retries(r):
         return 0
 
 def main(prompt ,retry_count):
-    result = get_user_input(prompt ,retry_count)
+    retry_validated = validate_retries(retry_count)
+    
+    if retry_validated == 0:
+        result = get_user_input(prompt ,retry_count)
 
-    if not result:
-        print("Fail")
-    else:
-        """ we stub in a 'pass' msg in place of executing stmts"""
-        print("Pass")
+        if not result:
+            print("Fail")
+        else:
+            """ we stub in a 'pass' msg in place of executing stmts"""
+            print("Pass")
 
 if __name__ == '__main__':
     """usage: python retry_userinput_demo.py -r 2 -p 'enter item from list: ' """
