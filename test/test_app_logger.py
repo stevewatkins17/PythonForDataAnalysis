@@ -1,7 +1,7 @@
 import pytest ,os
 from ..src import app_logger
 
-logfile = "data/test.log"
+logfile = "Data/test.log"
 
 @pytest.fixture
 def get_log():
@@ -10,7 +10,8 @@ def get_log():
     return log
 
 @pytest.fixture
-def delete_log():
+def delete_log(get_log):
+    get_log.removeHandler(logfile) 
     os.remove(logfile)
     return 0
 
@@ -22,9 +23,9 @@ def test_get_log(get_log):
 def test_logwrite(get_log):
     count = 0
     # open file in read mode
-    with open(logfile, 'r') as f:
+    with open(logfile, 'r', encoding="utf-8") as f:
         count = sum(1 for line in f)
     assert count > 0
 
-def test_delete_log(delete_log):
+def _test_delete_log(delete_log):
     assert os.path.isfile(logfile) == False

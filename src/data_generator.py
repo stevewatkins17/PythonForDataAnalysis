@@ -4,7 +4,7 @@ import random
 
 def create_csv(myfile ,linecount ,list0 ,list1 ,list2):
     """ we generate and persist a csv file """
-    with open(myfile, "w") as file:
+    with open(myfile, "w", encoding="utf-8") as file:
         # Writing data to a file
         for _ in range(linecount):
             item0 = '"' + random.choice(list0) + '"'
