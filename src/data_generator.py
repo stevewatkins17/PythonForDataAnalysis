@@ -7,9 +7,9 @@ def create_csv(myfile ,linecount ,list0 ,list1 ,list2):
     with open(myfile, "w", encoding="utf-8") as file:
         # Writing data to a file
         for _ in range(linecount):
-            item0 = '"' + random.choice(list0) + '"'
-            item1 = '"' + random.choice(list1) + '"'
-            item2 = '"' + random.choice(list2) + '"'
+            item0 = random.choice(list0)
+            item1 = random.choice(list1)
+            item2 = random.choice(list2)
             myline = "||".join([item0 ,item1 ,item2])
             file.writelines(f"{myline} \n")
     return 0
