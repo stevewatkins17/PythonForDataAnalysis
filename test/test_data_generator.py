@@ -20,7 +20,8 @@ def delete_files(myfiles):
     return result
 
 def test_main_dg(myfiles ,delete_files):
-    csv_create_result =  dg.main(myfiles[0])
+    linecount = 17
+    csv_create_result =  dg.main(myfiles[0] ,linecount)
     assert csv_create_result == 0
 
 def test_create_csv(myfiles ,delete_files):

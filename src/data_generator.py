@@ -1,6 +1,6 @@
-# data_generator.py
+# src/data_generator.py
 import random
-
+import argparse
 
 def create_csv(myfile ,linecount ,list0 ,list1 ,list2):
     """ we generate and persist a csv file """
@@ -14,18 +14,23 @@ def create_csv(myfile ,linecount ,list0 ,list1 ,list2):
             file.writelines(f"{myline} \n")
     return 0
 
-def main(myfile="data/orders.csv"):
+def main(myfile ,linecount):
     """ we pass input variables to FN that generates and persists a csv file """
-    linecount = 20000
+    
     maincourse = ["" ,"haggis" ,"Miquel's Pizza" ,"falafel" ,"pesce con vivo" ,"hasenpfeffer" ,"green coconut curry" ,"ciopinno" ,"potato pie"]
     veg = ["" ,"potato au gratin" ,"Chef John 5-spice carrots" ,"kale" ,"broccali" ,"brussels sprouts" ,"cauliflower" ,"peas" ,"roasted green beans"]
     dessert = ["" ,"tavuk göğsü" ,"creme brulee" ,"Mizu Shingen Mochi" ,"green chili chocolate tart" ,"melopita" ,"saffron kheer" ,"cinnamon brioche" ,"mom's peach cobbler" ,"cherry ice cream"]
     
-
     csv_create_result = create_csv(myfile ,linecount ,maincourse ,veg ,dessert)
     return csv_create_result
 
 if __name__ == '__main__':
-    myfile = "../data/orders.csv"
-    myresult = main(myfile)
-    #print(f"csv_create_result={myresult}")
+    """ python src/data_generator.py -f "Data/orders.csv" -c "117" """
+    parser = argparse.ArgumentParser(description='generates a mock data file')
+    parser.add_argument('-f','--filename' ,type=str, required=True ,help='relative path and file name')
+    parser.add_argument('-c','--count',type=int ,required=True ,help='count of mock records to generate')
+
+    args = parser.parse_args()
+ 
+    myresult = main(args.filename ,args.count)
+    
