@@ -7,6 +7,8 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+PyFDA/
+Data/__MACOSX
 .DS_Store
 .Python
 build/

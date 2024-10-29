@@ -19,7 +19,7 @@ def main(module_name):
 
 if __name__ == '__main__':
     """
-    usage: python main.py -r 2 -p 'enter item from list: '
+    usage: python src/find_module.py -n "requests"
     """
     parser = argparse.ArgumentParser(description='Description of your program')
     parser.add_argument('-n','--namemodule'     ,type=str, required=True ,help='words presented to user')
