@@ -23,9 +23,10 @@ Display the following dataframe (in index sort order)
   "startTime" ,"shortForecast" ,"temperature" ,"probabilityOfPrecipitation" ,"relativeHumidity"
 
 # More Challenge
+The above not enough for you? Try these:
 - download the JSON file directly into your Jupyter notebook by making a URL request to the address shown above
 - rename columns to shorter, easier-to-display names
 - reformat the datetime value to something easier to read for someone in its offset timezone (US Eastern)
-- convert the dewpoint's Celsius value to Farenheit
+- convert the dewpoint's Celsius value to Fahrenheit
 - concatenate columns "temperature" and "temperatureUnit" so that the reader better understands the "temperature" value
 - use a json datafile that you download directly from the source "https://api.weather.gov"
